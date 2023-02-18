@@ -27,7 +27,6 @@ def seed_teachers():
 
 def seed_disciplines():
     sql = "INSERT INTO disciplines(name, teacher_id) VALUES(?, ?);"
-    #ids = iter(randint(1, NUMBER_TEACHERS) for _ in range(len(disciplines)))
     c.executemany(sql, zip(disciplines, iter(randint(1, NUMBER_TEACHERS) for _ in range(len(disciplines)))))
 
 def seed_groups():
