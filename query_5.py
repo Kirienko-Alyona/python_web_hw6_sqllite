@@ -8,19 +8,18 @@ fake = Faker('uk-UA')
 
 #Найти какие курсы читает определенный преподаватель.
 
-query_5= """
-SELECT t.fullname, d.name AS teacher_desciplines
+query= """
+SELECT t.fullname AS teacher, d.name AS descipline
 FROM disciplines d
 JOIN teachers t ON t.id = d.teacher_id
 WHERE t.id = 2
-GROUP BY d.name
-ORDER BY teacher_desciplines DESC;
+ORDER BY descipline DESC;
 """
 
 
 if __name__ == '__main__':
     with connection() as conn:
         c = conn.cursor()
-        c.execute(query_5)
+        c.execute(query)
         pprint.pprint(c.fetchall())
         c.close()

@@ -9,7 +9,7 @@ fake = Faker('uk-UA')
 #Найти 5 студентов с наибольшим средним баллом по всем предметам.
 
 query = """
-    SELECT s.fullname, ROUND(AVG(g.grade), 2) AS average_grade
+    SELECT s.fullname AS student, ROUND(AVG(g.grade), 2) AS average_grade
     FROM grades g
     JOIN students s ON s.id = g.student_id
     GROUP BY s.fullname

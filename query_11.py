@@ -6,16 +6,15 @@ from db_connection import connection
 
 fake = Faker('uk-UA')
 
-#Найти средний балл, который ставит определенный преподаватель по своим предметам.
+#Средний балл, который определенный преподаватель ставит определенному студенту.
 
 query= """
-SELECT t.fullname AS teacher, d.name AS discipline, ROUND(AVG(gr.grade), 2) AS average_grade
+SELECT s.fullname AS student, t.fullname AS teacher, ROUND(AVG(gr.grade), 2) AS average_grade
 FROM grades gr
 JOIN disciplines d ON d.id = gr.discipline_id
+JOIN students s ON s.id = gr.student_id
 JOIN teachers t ON t.id = d.teacher_id
-WHERE t.id = 2
-GROUP BY t.fullname, d.name
-ORDER BY average_grade;
+WHERE s.id = 17 AND t.id = 2;
 """
 
 

@@ -9,7 +9,7 @@ fake = Faker('uk-UA')
 #Найти средний балл в группах по определенному предмету.
 
 query = """
-SELECT d.name, gr.name, ROUND(AVG(g.grade), 2) AS average_grade
+SELECT d.name AS discipline, gr.name AS group, ROUND(AVG(g.grade), 2) AS average_grade
 FROM grades g
 JOIN students s ON s.id = g.student_id
 JOIN disciplines d ON d.id = g.discipline_id
