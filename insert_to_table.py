@@ -1,8 +1,8 @@
 from datetime import datetime, date, timedelta
 from random import randint
 from pprint import pprint
+import sqlite3
 
-from psycopg2 import Error
 from faker import Faker
 
 from db_connection import connection
@@ -73,7 +73,7 @@ if __name__ == '__main__':
             seed_students()
             seed_grades()
             conn.commit()
-        except Error as error:
+        except sqlite3.Error as error:
             pprint(error)
         finally:
             c.close()

@@ -9,7 +9,7 @@ def connection():
         conn = sqlite3.connect('hw_6.db')
         yield conn
         conn.commit()
-    except  sqlite3.Error as error:
+    except sqlite3.Error as error:
         print(error)
         conn.rollback()
     finally:
